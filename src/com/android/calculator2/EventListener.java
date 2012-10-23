@@ -42,12 +42,10 @@ class EventListener implements View.OnKeyListener,
         case R.id.equal:
             mHandler.onEnter();
             break;
-
-            /*
+            
         case R.id.clear:
             mHandler.onClear();
             break;
-            */
 
         default:
             if (view instanceof Button) {
