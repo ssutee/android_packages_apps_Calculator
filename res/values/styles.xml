@@ -2,7 +2,7 @@
 <resources>
 
     <style name="button_style">
-        <item name="android:textSize">38dp</item>
+        <item name="android:textSize">24dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
@@ -16,15 +16,15 @@
     </style>
 
     <style name="button_small_style" parent="button_style">
-        <item name="android:textSize">30dp</item>
+        <item name="android:textSize">18dp</item>
     </style>
 
     <style name="command_button_style" parent="button_style">
-        <item name="android:textSize">13dp</item>
+        <item name="android:textSize">8dp</item>
     </style>
 
     <style name="display_style">
-        <item name="android:textSize">38dp</item>
+        <item name="android:textSize">24dp</item>
         <item name="android:gravity">right|center_vertical</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:maxLines">1</item>

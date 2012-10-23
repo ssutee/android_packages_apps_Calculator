@@ -25,10 +25,12 @@ import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Calculator extends Activity {
+public class Calculator extends Activity implements CalculatorInterface {
 	EventListener mListener = new EventListener();
 	private CalculatorDisplay mDisplay;
 	private Persist mPersist;
@@ -39,8 +41,6 @@ public class Calculator extends Activity {
 	private static final int CMD_CLEAR_HISTORY = 1;
 	private static final int CMD_BASIC_PANEL = 2;
 	private static final int CMD_ADVANCED_PANEL = 3;
-
-	private static final int HVGA_WIDTH_PIXELS = 320;
 
 	static final int BASIC_PANEL = 0;
 	static final int ADVANCED_PANEL = 1;
@@ -75,7 +75,9 @@ public class Calculator extends Activity {
 		mListener.setHandler(mLogic, mPanelSwitcher);
 
 		mDisplay.setOnKeyListener(mListener);
+		mDisplay.setCalculator(this);
 
+		Utils.setupButtons((ViewGroup) findViewById(R.id.main), this);
 	}
 
 	@Override
@@ -172,7 +174,12 @@ public class Calculator extends Activity {
 		float fontPixelSize = view.getTextSize();
 		Display display = getWindowManager().getDefaultDisplay();
 		int h = Math.min(display.getWidth(), display.getHeight());
-		float ratio = (float) h / HVGA_WIDTH_PIXELS;
+		float ratio = (float) h / Constants.HVGA_WIDTH_PIXELS;
 		view.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontPixelSize * ratio);
+	}
+
+	@Override
+	public OnClickListener getOnClickListener() {
+		return mListener;
 	}
 }
