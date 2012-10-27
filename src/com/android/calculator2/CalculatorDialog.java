@@ -3,6 +3,7 @@ package com.android.calculator2;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ public class CalculatorDialog extends AlertDialog implements
 
 		ViewGroup view = (ViewGroup) LayoutInflater.from(context).inflate(
 				R.layout.main, null);
+		view.setBackgroundColor(Color.BLACK);
 
 		mPersist = new Persist(context);
 		mHistory = mPersist.history;
