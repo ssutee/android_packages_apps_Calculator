@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 public class CalculatorDialog extends AlertDialog implements
 		CalculatorInterface {
+
+	protected static final String TAG = "CalculatorDialog";
 
 	private OnNumberEnterListener onNumberEnterListener;
 
@@ -62,8 +65,10 @@ public class CalculatorDialog extends AlertDialog implements
 				if (onNumberEnterListener != null) {
 					double number = 0;
 					try {
-						number = Double.valueOf(mLogic.onEnter());
+						number = Double.valueOf(mLogic.onEnter().replace(
+								Logic.MINUS, '-'));
 					} catch (NumberFormatException e) {
+						e.printStackTrace();
 					}
 					onNumberEnterListener.onNumberEnter(CalculatorDialog.this,
 							number);
