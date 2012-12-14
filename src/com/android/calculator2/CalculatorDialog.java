@@ -4,12 +4,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.android.calculator2.CalculatorDisplay.Scroll;
 
 public class CalculatorDialog extends AlertDialog implements
 		CalculatorInterface {
@@ -27,7 +28,7 @@ public class CalculatorDialog extends AlertDialog implements
 	private PanelSwitcher mPanelSwitcher;
 
 	public CalculatorDialog(Context context, int displayWidth,
-			int displayHeight, String done, String cancel) {
+			int displayHeight, String done, String cancel, String number) {
 		super(context);
 
 		mWidth = displayWidth;
@@ -55,6 +56,10 @@ public class CalculatorDialog extends AlertDialog implements
 
 		mDisplay.setOnKeyListener(mListener);
 		mDisplay.setCalculator(this);
+
+		if (number != null) {
+			mDisplay.setText(number, Scroll.NONE);
+		}
 
 		Utils.setupButtons(view, this);
 
