@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
@@ -63,10 +64,13 @@ public class CalculatorDialog extends AlertDialog implements
 
 		Utils.setupButtons(view, this);
 
-		setView(view);
-		setButton(AlertDialog.BUTTON_POSITIVE, done, new OnClickListener() {
+		setView(view, 0, 0, 0, 0);
+
+		Button btnEnter = (Button) view.findViewById(R.id.btnDone);
+		btnEnter.setText(done);
+		btnEnter.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onClick(DialogInterface dialog, int which) {
+			public void onClick(View v) {
 				if (onNumberEnterListener != null) {
 					double number = 0;
 					try {
@@ -78,9 +82,10 @@ public class CalculatorDialog extends AlertDialog implements
 					onNumberEnterListener.onNumberEnter(CalculatorDialog.this,
 							number);
 				}
+				dismiss();
 			}
 		});
-		setButton(AlertDialog.BUTTON_NEGATIVE, cancel, (OnClickListener) null);
+
 		setOnDismissListener(new OnDismissListener() {
 			@Override
 			public void onDismiss(DialogInterface dialog) {

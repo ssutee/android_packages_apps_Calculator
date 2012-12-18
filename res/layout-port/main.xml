@@ -274,4 +274,11 @@
         </LinearLayout>
     </com.android.calculator2.PanelSwitcher>
 
+    <Button
+        android:id="@+id/btnDone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enter"
+        android:textSize="18sp" />
+
 </LinearLayout>
