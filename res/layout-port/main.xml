@@ -279,10 +279,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_default_holo_dark"
-        android:minHeight="45dp"
+        android:minHeight="48dp"
         android:text="@string/enter"
         android:textColor="#EEE"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textSize="20sp" />
 
 </LinearLayout>
