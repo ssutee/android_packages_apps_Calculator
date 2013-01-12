@@ -57,23 +57,23 @@
 
                 <com.android.calculator2.ColorButton
                     android:id="@+id/leftParen"
-                    style="@style/button_style"
+                    style="@style/symbol_style"
                     android:text="@string/leftParen" />
 
                 <com.android.calculator2.ColorButton
                     android:id="@+id/rightParen"
-                    style="@style/button_style"
+                    style="@style/symbol_style"
                     android:text="@string/rightParen" />
 
                 <com.android.calculator2.ColorButton
                     android:id="@+id/del"
                     style="@style/button_style"
-                    android:text="@string/del" />
+                    android:text="@string/backspace" />
 
                 <com.android.calculator2.ColorButton
                     android:id="@+id/clear"
-                    style="@style/command_button_style"
-                    android:text="@string/clear" />
+                    style="@style/symbol_style"
+                    android:text="@string/c" />
             </LinearLayout>
 
             <LinearLayout
