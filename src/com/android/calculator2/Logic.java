@@ -25,6 +25,9 @@ import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 class Logic {
 	private CalculatorDisplay mDisplay;
 	private Symbols mSymbols = new Symbols();
@@ -180,8 +183,7 @@ class Logic {
 			--size;
 		}
 
-		String result = Util.doubleToString(mSymbols.eval(input), mLineLength,
-				ROUND_DIGITS);
+        String result = new DecimalFormat("#0.##").format(mSymbols.eval(input));
 		if (result.equals(NAN)) { // treat NaN as Error
 			mIsError = true;
 			return mErrorString;

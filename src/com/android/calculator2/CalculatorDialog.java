@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.calculator2.CalculatorDisplay.Scroll;
+
+import java.math.BigDecimal;
 
 public class CalculatorDialog extends AlertDialog implements
 		CalculatorInterface {
@@ -74,9 +77,11 @@ public class CalculatorDialog extends AlertDialog implements
 				if (onNumberEnterListener != null) {
 					double number = 0;
 					try {
-						number = Double.valueOf(mLogic.onEnter().replace(
-								Logic.MINUS, '-'));
-					} catch (NumberFormatException e) {
+                        String input = mLogic.onEnter();
+                        Log.i(TAG, input);
+                        number = new BigDecimal(input.replace(Logic.MINUS, '-')).doubleValue();
+                        Log.i(TAG, new BigDecimal(number).toPlainString());
+                    } catch (NumberFormatException e) {
 						e.printStackTrace();
 					}
 					onNumberEnterListener.onNumberEnter(CalculatorDialog.this,
