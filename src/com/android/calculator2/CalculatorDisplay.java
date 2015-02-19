@@ -163,7 +163,6 @@ class CalculatorDisplay extends ViewSwitcher {
 
 		EditText editText = (EditText) getNextView();
 		editText.setText(text);
-		// Calculator.log("selection to " + text.length() + "; " + text);
 		editText.setSelection(text.length());
 		showNext();
 	}
@@ -180,7 +179,6 @@ class CalculatorDisplay extends ViewSwitcher {
 
 	@Override
 	protected void onFocusChanged(boolean gain, int direction, Rect prev) {
-		// Calculator.log("focus " + gain + "; " + direction + "; " + prev);
 		if (!gain) {
 			requestFocus();
 		}

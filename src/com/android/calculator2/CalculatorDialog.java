@@ -4,11 +4,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -108,7 +107,9 @@ public class CalculatorDialog extends AlertDialog implements
 	public void adjustFontSize(TextView view) {
 		float fontPixelSize = view.getTextSize();
 		int h = Math.min(mWidth, mHeight);
-		float ratio = (float) h / Constants.HVGA_WIDTH_PIXELS;
+		WindowManager wm = (WindowManager)getContext().getSystemService(Context.WINDOW_SERVICE);
+		Display display = wm.getDefaultDisplay();
+		float ratio = (float) h / display.getWidth();
 		view.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontPixelSize * ratio);
 	}
 
